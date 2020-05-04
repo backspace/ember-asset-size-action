@@ -1,4 +1,4 @@
-import { getInput, debug, setFailed } from '@actions/core';
+import { getInput, debug, warning, setFailed } from '@actions/core';
 import { exec } from '@actions/exec';
 import { GitHub, context } from '@actions/github';
 import path from 'path';
@@ -15,6 +15,9 @@ async function getActionInputs() {
   const workingDirectory = getInput('working-directory', { required: false });
   const usePrArtifacts = getInput('use-pr-artifacts', { required: false });
   const token = getInput('repo-token', { required: true });
+
+  warning(`working directory: ${workingDirectory}`);
+  warning(`process.cwd ${process.cwd()}`);
   
   const cwd = path.join(process.cwd(), workingDirectory);
   debug(`cwd: ${cwd}`);
