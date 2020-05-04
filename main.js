@@ -73,6 +73,10 @@ export default async function run() {
     const { token, cwd, usePrArtifacts } = getActionInputs();
 
     const octokit = new GitHub(token);
+    const { data: userData } = await octokit.request("/user");
+    warning('user data?');
+    warning(JSON.stringify(userData));
+
 
     const pullRequest = await getPullRequest(context, octokit);
     const fileDiffs = await diffAssets({ pullRequest, cwd, usePrArtifacts });
