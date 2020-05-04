@@ -20,6 +20,7 @@ async function getActionInputs() {
   warning(`process.cwd ${process.cwd()}`);
   
   const cwd = path.join(process.cwd(), workingDirectory);
+  warning(`did i run?`);
   debug(`cwd: ${cwd}`);
   debug(`token: ${token}`);
 
