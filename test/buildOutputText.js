@@ -14,7 +14,9 @@ describe('Build output Text', function () {
 
     const text = buildOutputText(diff);
 
-    expect(text).to.equal(`Files that got Bigger 🚨:
+    expect(text).to.equal(`## Ember Asset Size action
+
+Files that got Bigger 🚨:
 
 File | raw | gzip
 --- | --- | ---
