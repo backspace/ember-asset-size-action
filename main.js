@@ -44,13 +44,13 @@ async function commentOnPR({ octokit, pullRequest, fileDiffs }) {
   const body = buildOutputText(fileDiffs, pullRequest);
 
   try {
-    const comments = await octokit.issues.listComments({
+    const { data: comments } = await octokit.issues.listComments({
       owner: context.repo.owner,
       repo: context.repo.repo,
       issue_number: pullRequest.number,
     });
 
-    const existingComment = comments.data.find(comment => {
+    const existingComment = comments.find(comment => {
       return comment.user.login == 'github-actions[bot]' &&
         comment.body.startsWith('## Ember Asset Size');
     });
