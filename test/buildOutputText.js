@@ -12,9 +12,11 @@ describe('Build output Text', function () {
       'vendor.css': { raw: 0, gzip: 0 },
     };
 
-    const text = buildOutputText(diff);
+    const text = buildOutputText(diff, { head: { sha: 'abcdefabcdef' }});
 
     expect(text).to.equal(`## Ember Asset Size action
+
+As of abcdefa
 
 Files that got Bigger 🚨:
 

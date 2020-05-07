@@ -41,7 +41,7 @@ async function diffAssets({ pullRequest, cwd, usePrArtifacts }) {
 }
 
 async function commentOnPR({ octokit, pullRequest, fileDiffs }) {
-  const body = buildOutputText(fileDiffs);
+  const body = buildOutputText(fileDiffs, pullRequest);
 
   try {
     const comments = await octokit.issues.listComments({
